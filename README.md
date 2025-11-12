@@ -1,5 +1,17 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## 🚀 Live Demo
+
+**公開URL**: [https://dev-demo-omega.vercel.app](https://dev-demo-omega.vercel.app)
+
+## 🛠 Tech Stack
+
+- **Frontend**: Next.js 15
+- **Authentication**: Better Auth
+- **Database**: Supabase (PostgreSQL)
+- **ORM**: Drizzle ORM
+- **Deployment**: Vercel
+
 ## Getting Started
 
 First, run the development server:
@@ -28,6 +40,16 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## 📦 Project Information
+
+- **Repository**: [https://github.com/cronoscrown/dev_demo](https://github.com/cronoscrown/dev_demo)
+- **Live URL**: [https://dev-demo-omega.vercel.app](https://dev-demo-omega.vercel.app)
+- **Framework**: Next.js 15 with App Router
+- **Database**: Supabase PostgreSQL
+- **Authentication**: Better Auth
+- **ORM**: Drizzle ORM
+- **Deployment**: Vercel
 
 ## Deploy on Vercel
 
