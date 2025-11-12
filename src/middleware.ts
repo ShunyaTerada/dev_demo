@@ -17,14 +17,19 @@ export async function middleware(request: NextRequest) {
   return NextResponse.next();
 }
 
+/**
+ * ミドルウェア設定オブジェクト - URLパターンマッチングを定義
+ * 
+ * @description パターンマッチングを使用してミドルウェアが実行されるルートを指定します。
+ * 現在のマッチャーは、APIルート、静的ファイル、拡張子付きファイル、Next.js内部ルートを除外します。
+ * 
+ * @property {string[]} matcher - ミドルウェアが実行されるパスパターンの配列
+ *   - 'api', 'static', '_next'で始まるパスを除外
+ *   - ファイル拡張子を含むパス (.*\\..*) を除外
+ *   - その他すべてのパスを否定先読み正規表現でマッチング
+ */
 export const config = {
-  // API や画像など除外するべきファイルにマッチさせる
-  matcher: [
-    /*
-     * /api で始まるパス以外
-     * /_next/static, _next/image, favicon.ico などを除外
-     * 画像ファイル(.png, .jpg, .jpeg, .gif, .svg, .webp など)を除外
-     */
-    "/((?!api|_next/static|_next/image|favicon.ico|.*\\.(png|jpg|jpeg|gif|svg|webp|ico)).*)‍",
-  ],
+    matcher: [
+        "/((?!api|static|.*\\..*|_next).*)",
+    ],
 };
