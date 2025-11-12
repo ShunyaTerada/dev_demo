@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## 🚀 Live Demo
 
-**公開URL**: [https://dev-demo-omega.vercel.app](https://dev-demo-omega.vercel.app)
+**公開 URL**: [https://dev-demo-omega.vercel.app](https://dev-demo-omega.vercel.app)
 
 ## 🛠 Tech Stack
 
