@@ -17,7 +17,14 @@ export default function Header() {
         </div>
 
         {/* ナビゲーション */}
-        <nav className="flex items-center">
+        <nav className="flex items-center space-x-2">
+          {/* ログインボタン */}
+          <Link href="/login">
+            <Button variant="outline" size="sm">
+              ログイン
+            </Button>
+          </Link>
+          
           {/* マイページへのリンク */}
           <Link href="/profile">
             <Button variant="ghost" size="sm" className="flex items-center space-x-2">
