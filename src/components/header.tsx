@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 export default function Header() {
   return (
     <header className="bg-background border-b sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-3">
+      <div className="container py-3">
         <div className="flex items-center justify-between">
           {/* ロゴ */}
           <Link href="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
