@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 export default function Header() {
   return (
     <header className="bg-background border-b sticky top-0 z-50">
-      <div className="container flex h-16 items-center justify-between">
+      <div className="mx-auto px-4 sm:px-24 lg:px-36 flex h-16 items-center justify-between">
         <div className="flex items-center space-x-2">
           {/* ロゴ */}
           <Link href="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
