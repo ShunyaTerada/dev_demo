@@ -51,6 +51,7 @@ export default function LoginPage() {
                 src={coverImage}
                 alt="ログインページカバー画像" 
                 fill
+                placeholder='blur'
                 className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/20" />
