@@ -11,6 +11,8 @@ import { Separator } from '@/components/ui/separator';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Eye, EyeOff, Mail, Lock, Github } from 'lucide-react';
 import coverImage from './login-form-cover.jpg';
+import { authClient } from '../../../lib/auth-client';
+import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -39,6 +41,8 @@ export default function LoginPage() {
     }
   };
 
+  const router = useRouter();
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-background p-4">
       <Card className="w-full max-w-md">
@@ -46,17 +50,17 @@ export default function LoginPage() {
           <CardTitle className="text-2xl font-bold text-center">ログイン</CardTitle>
           <CardDescription className="text-center">
             アカウントにログインしてください
-        <div className="relative h-48 overflow-hidden">
+          </CardDescription>
+          <div className="relative h-48 overflow-hidden">
             <Image 
-                src={coverImage}
-                alt="ログインページカバー画像" 
-                fill
-                placeholder='blur'
-                className="object-cover"
+              src={coverImage}
+              alt="ログインページカバー画像" 
+              fill
+              placeholder='blur'
+              className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/20" />
-        </div>
-            </CardDescription>
+            <div className="absolute inset-0 bg-linear-to-b from-transparent to-background/20" />
+          </div>
         </CardHeader>
         <CardContent className="space-y-4">
           {error && (
@@ -132,6 +136,28 @@ export default function LoginPage() {
               {isLoading ? 'ログイン中...' : 'ログイン'}
             </Button>
           </form>
+
+          <Button 
+            type="button" 
+            variant="outline"
+            className="w-full" 
+            disabled={isLoading}
+            onClick={async () => {
+              try {
+                setIsLoading(true);
+                await authClient.signIn.anonymous();
+                router.push('/mypage');
+              } catch (error) {
+                console.error('ゲストログインエラー:', error);
+                setError('ゲストログインに失敗しました。');
+              } finally {
+                setIsLoading(false);
+              }
+            }}
+          >
+            {isLoading ? 'ログイン中...' : 'ゲストでログイン'}
+          </Button>
+
 
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
