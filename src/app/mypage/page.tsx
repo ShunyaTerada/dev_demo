@@ -1,19 +1,11 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { UserCard } from '@/components/user-card';
-import { auth } from '../../../lib/auth';
-import { headers } from 'next/headers';
-import { redirect } from 'next/navigation';
+import { verifySession } from '../../../lib/session';
 
 export default async function MypagePage() {
 
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-
-  if (!session) {
-    redirect('/login');
-  }
+  const session = await verifySession();
 
   return (
     <div className="container mx-auto py-8 space-y-6">
