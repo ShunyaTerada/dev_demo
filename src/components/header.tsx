@@ -20,22 +20,29 @@ export default function Header() {
         </div>
 
         {/* ナビゲーション */}
-        <nav className="flex items-center space-x-2">
+        <nav className="flex items-center space-x-4">
           {/* ログインボタン */}
           <Button 
             variant="outline" 
             size="sm"
-            onClick={() => router.push('/login')}
+            className="bg-white hover:bg-gray-50 border-gray-300"
+            onClick={() => {
+              console.log('ログインボタンがクリックされました');
+              router.push('/login');
+            }}
           >
             ログイン
           </Button>
           
           {/* マイページへのリンク */}
           <Button 
-            variant="ghost" 
+            variant="outline" 
             size="sm" 
-            className="flex items-center space-x-2"
-            onClick={() => router.push('/mypage')}
+            className="flex items-center space-x-2 bg-black hover:bg-gray-300 text-white"
+            onClick={() => {
+              console.log('マイページボタンがクリックされました - 遷移先: /mypage');
+              router.push('/mypage');
+            }}
           >
             <svg 
               className="w-4 h-4" 
