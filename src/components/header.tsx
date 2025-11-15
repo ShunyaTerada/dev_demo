@@ -25,7 +25,7 @@ export default function Header() {
           <Button 
             variant="outline" 
             size="sm"
-            className="bg-white hover:bg-gray-50 border-gray-300"
+            className="bg-white hover:bg-gray-500 border-gray-300"
             onClick={() => {
               console.log('ログインボタンがクリックされました');
               router.push('/login');
