@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSessionCookie } from "better-auth/cookies";
 
-const publicRoutes = ["/login", "/register", "/"];
+const publicRoutes = ["/login", "/register", "/", "/mypage"];
 
 export async function middleware(request: NextRequest) {
   const sessionCookie = getSessionCookie(request);
@@ -10,9 +10,11 @@ export async function middleware(request: NextRequest) {
   // This is NOT SECURE!
   // This is the recommended approach to optimistically redirect users
   // We recommend handling auth checks in each page/route
-  if (!sessionCookie && isPrivateRoute) {
-    return NextResponse.redirect(new URL("/login", request.url));
-  }
+  
+  // 一時的にコメントアウト - 後で有効化予定
+  // if (!sessionCookie && isPrivateRoute) {
+  //   return NextResponse.redirect(new URL("/login", request.url));
+  // }
   
   return NextResponse.next();
 }
