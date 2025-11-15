@@ -11,10 +11,10 @@ export async function middleware(request: NextRequest) {
   // This is the recommended approach to optimistically redirect users
   // We recommend handling auth checks in each page/route
   
-  // 一時的にコメントアウト - 後で有効化予定
-  // if (!sessionCookie && isPrivateRoute) {
-  //   return NextResponse.redirect(new URL("/login", request.url));
-  // }
+  
+  if (!sessionCookie && isPrivateRoute) {
+    return NextResponse.redirect(new URL("/login", request.url));
+  }
   
   return NextResponse.next();
 }
