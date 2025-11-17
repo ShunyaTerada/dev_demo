@@ -1,6 +1,6 @@
 import { pgTable, text, integer, pgEnum } from "drizzle-orm/pg-core";
 import { users } from "./auth";
-import { nanoid } from "better-auth";
+import { nanoid } from "nanoid";
 
 // ペットタイプのenum（犬または猫）
 export const petTypeEnum = pgEnum("pet_type", ["dog", "cat"]);
