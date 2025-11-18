@@ -8,11 +8,15 @@ export default function PetsPage(){
         {id: "2", name: "Whiskers", type: "cat", hp: 60, ownerID: "owner2"},]
     ;
     return (
-        <div>
-        <h1>ペット一覧</h1>
-        {mockPets.map((pet)=>
-            <PetCard key={pet.id} pet={pet} />
-        )}
+        <div className='container mx-auto p-10'>
+        <h1 className="text-2xl font-bold mb-4">ペット一覧</h1>
+            <div className="grid grid-cols-2 sm:grid-cols-3  gap-4 font-bold text-black">
+                {mockPets.map((pet)=>(
+                    <div key={pet.id}>
+                <PetCard pet={pet} />
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }
