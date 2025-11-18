@@ -8,6 +8,13 @@
       "when": 1762816721795,
       "tag": "0000_tricky_cassandra_nova",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1763425546074,
+      "tag": "0001_legal_invaders",
+      "breakpoints": true
     }
   ]
 }
