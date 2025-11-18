@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
+import Footer from "@/components/footer";
 import { getBaseURL } from "../../lib/get-base-url";
 
 const geistSans = Geist({
@@ -31,13 +32,14 @@ export default function RootLayout({
   return (
     <html lang="jp">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
         suppressHydrationWarning={true}
       >
         <Header />
-        <main>
+        <main className="flex-1">
           {children}
         </main>
+        <Footer />
       </body>
     </html>
   );
