@@ -11,8 +11,7 @@ export function UserCard({ user }: { user: User }) {
                 </Avatar>
                 <Avatar className="rounded-lg">
                     <AvatarImage
-                        src="https://github.com/evilrabbit.png"
-                        alt="@evilrabbit"
+                        src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${user.id}`}
                     />
                     <AvatarFallback>ER</AvatarFallback>
                 </Avatar>
