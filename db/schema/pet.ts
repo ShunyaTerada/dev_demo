@@ -3,8 +3,10 @@ import { users } from "./auth";
 import { nanoid } from "nanoid";
 import { relations } from "drizzle-orm";
 
+export const petType = ["dog", "cat"] as const;
+
 // ペットタイプのenum（犬または猫）
-export const petTypeEnum = pgEnum("pet_type", ["dog", "cat"]);
+export const petTypeEnum = pgEnum("pet_type", petType);
 
 export const pets = pgTable("pets", {
   id: text("id").primaryKey().$defaultFn(() => nanoid(10)),
