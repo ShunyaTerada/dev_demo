@@ -1,14 +1,12 @@
 import { createAuthClient } from "better-auth/react";
 import { getBaseURL } from "./get-base-url";
 import { anonymousClient, inferAdditionalFields } from "better-auth/client/plugins";
-import { emailClient } from "better-auth/client/plugins";
 import { auth } from "./auth";
 
 export const authClient = createAuthClient({
   baseURL: getBaseURL(),
   plugins: [
     anonymousClient(),
-    emailClient(),
     inferAdditionalFields<typeof auth>(),
   ],
 });
