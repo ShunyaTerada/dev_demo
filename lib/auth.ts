@@ -18,4 +18,8 @@ export const auth = betterAuth({
     generateId: () => nanoid(10),
   },
   plugins: [nextCookies()],
+  emailAndPassword: {
+    enabled: true,
+    requireEmailVerification: false,
+  },
 });
