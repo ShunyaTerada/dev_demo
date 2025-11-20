@@ -8,11 +8,16 @@ import { and, eq } from 'drizzle-orm';
 import { z } from 'zod';
 
 export async function createPet(formData: z.infer<typeof PetFormSchema>){
-    const data = PetFormSchema.parse(formData);
-    const session = await verifySession();
-    const ownerID = session.user.id;
+    try {
+        const data = PetFormSchema.parse(formData);
+        const session = await verifySession();
+        const ownerID = session.user.id;
 
-    await db.insert(pets).values({...data, ownerID}); 
+        await db.insert(pets).values({...data, ownerID});
+    } catch (error) {
+        console.error('Error creating pet:', error);
+        throw error;
+    }
 }
 
 export async function updatePet(id:string ,formData: z.infer<typeof PetFormSchema>){

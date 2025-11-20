@@ -37,7 +37,6 @@ export default function PetForm() {
   });
 
   const onSubmit = async (data: PetFormData) => {
-    // TODO: サーバーアクションでペットを登録する処理を実装
     try {
       await createPet(data);
       toast("ペットが作成されました！", {
@@ -45,14 +44,14 @@ export default function PetForm() {
       });
       form.reset();
       router.refresh();
+      // 成功時のみペット一覧ページにリダイレクト
+      router.push('/pets');
     } catch (error) {
       toast("エラーが発生しました", {
-        description: "ペットの作成に失敗しました。",
+        description: error instanceof Error ? error.message : "ペットの作成に失敗しました。",
       });
       console.error("Error creating pet:", error);
     }
-    // フォーム送信後、ペット一覧ページにリダイレクト
-    router.push('/pets');
   };
 
 
