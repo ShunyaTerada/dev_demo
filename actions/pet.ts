@@ -5,12 +5,32 @@ import { PetFormSchema } from '@/zod/pet';
 import { pets } from '../db/schema/pet';
 import { PetFormData } from '@/types/pet';
 import { verifySession } from '../lib/session';
+import { and, eq } from 'drizzle-orm';
 
 export async function createPet(formData: PetFormData){
     const data = PetFormSchema.parse(formData);
-
     const session = await verifySession();
     const ownerID = session.user.id;
 
     await db.insert(pets).values({...data, ownerID}); 
 }
+
+export async function updatePet(id:string ,formData: PetFormData){
+    const data = PetFormSchema.parse(formData);
+    const session = await verifySession();
+    const ownerID = session.user.id;
+
+    await db
+    .update(pets)
+    .set({...data, ownerID})
+    .where(and(eq(pets.id, id), eq(pets.ownerID, ownerID)));
+}
+
+export async function deletePet(id:string){
+    const session = await verifySession();
+    const ownerID = session.user.id; 
+    
+    await db
+    .delete(pets)
+    .where(and(eq(pets.id, id), eq(pets.ownerID, ownerID)));
+}       
