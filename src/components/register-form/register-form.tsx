@@ -1,6 +1,6 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
+import { useForm } from '../../../node_modules/.pnpm/react-hook-form@7.66.0_react@19.2.0/node_modules/react-hook-form/dist';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -62,7 +62,7 @@ export default function RegisterForm() {
       toast.success("アカウントが作成されました！", {
         description: "ログインしてください。",
       });
-      
+
       // 登録成功後、ログインページにリダイレクト
       router.push('/login');
     } catch (err) {
@@ -86,9 +86,9 @@ export default function RegisterForm() {
             新しいアカウントを作成してください
           </CardDescription>
           <div className="relative h-48 overflow-hidden">
-            <Image 
+            <Image
               src={coverImage}
-              alt="新規登録ページカバー画像" 
+              alt="新規登録ページカバー画像"
               fill
               placeholder='blur'
               className="object-cover"

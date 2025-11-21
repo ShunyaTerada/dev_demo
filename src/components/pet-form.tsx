@@ -1,6 +1,6 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
+import { useForm } from '../../node_modules/.pnpm/react-hook-form@7.66.0_react@19.2.0/node_modules/react-hook-form/dist';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import { PetFormSchema } from '../../zod/pet';
