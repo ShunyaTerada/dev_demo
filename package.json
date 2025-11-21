@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "better-auth:generate": "pnpx @better-auth/cli generate --output db/schema/auth.ts",
+    "db:migrate": "tsx db/migrate.ts",
     "drizzle:generate": "pnpm drizzle-kit generate",
     "drizzle:migrate": "pnpm drizzle-kit migrate",
     "drizzle:push": "pnpm drizzle-kit push",
@@ -83,6 +84,7 @@
     "shadcn": "^3.5.0",
     "supabase": "^2.54.11",
     "tailwindcss": "^4",
+    "tsx": "^4.20.6",
     "typescript": "^5"
   }
 }

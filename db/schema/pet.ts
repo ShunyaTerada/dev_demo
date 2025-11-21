@@ -1,5 +1,5 @@
 import { pgTable, text, integer, pgEnum } from "drizzle-orm/pg-core";
-import { users } from "./auth";
+import { user } from "./auth";
 import { nanoid } from "nanoid";
 import { relations } from "drizzle-orm";
 
@@ -13,12 +13,12 @@ export const pets = pgTable("pets", {
   name: text("name").notNull(),
   type: petTypeEnum("type").notNull(),
   hp: integer("hp").notNull().default(50),
-  ownerID: text("owner_id").notNull().references(() => users.id, {onDelete: "cascade"})
+  ownerID: text("owner_id").notNull().references(() => user.id, { onDelete: "cascade" })
 });
 
-export const petRelations = relations(pets,({one})=>({
-  owners: one(users,{
+export const petRelations = relations(pets, ({ one }) => ({
+  owners: one(user, {
     fields: [pets.ownerID],
-    references: [users.id],
+    references: [user.id],
   }),
 }));
