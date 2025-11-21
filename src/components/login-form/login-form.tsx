@@ -11,7 +11,7 @@ import { Separator } from '@/components/ui/separator';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Eye, EyeOff, Mail, Lock, Github } from 'lucide-react';
 import coverImage from './login-form-cover.jpg';
-import { authClient } from '../../../lib/auth-client';
+import { authClient } from '@/lib/auth-client';
 import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
@@ -30,10 +30,10 @@ export default function LoginPage() {
     try {
       // 仮の認証処理
       await new Promise(resolve => setTimeout(resolve, 2000));
-      
+
       // 成功時の処理
       console.log('ログイン成功:', { email, password });
-      
+
     } catch {
       setError('ログインに失敗しました。メールアドレスとパスワードを確認してください。');
     } finally {
@@ -52,9 +52,9 @@ export default function LoginPage() {
             アカウントにログインしてください
           </CardDescription>
           <div className="relative h-48 overflow-hidden">
-            <Image 
+            <Image
               src={coverImage}
-              alt="ログインページカバー画像" 
+              alt="ログインページカバー画像"
               fill
               placeholder='blur'
               className="object-cover"
@@ -137,10 +137,10 @@ export default function LoginPage() {
             </Button>
           </form>
 
-          <Button 
-            type="button" 
+          <Button
+            type="button"
             variant="outline"
-            className="w-full" 
+            className="w-full"
             disabled={isLoading}
             onClick={async () => {
               try {

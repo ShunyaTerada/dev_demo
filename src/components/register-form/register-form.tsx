@@ -1,6 +1,6 @@
 'use client';
 
-import { useForm } from '../../../node_modules/.pnpm/react-hook-form@7.66.0_react@19.2.0/node_modules/react-hook-form/dist';
+import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -19,7 +19,7 @@ import { Separator } from '@/components/ui/separator';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Eye, EyeOff, Mail, Lock, User, Github } from 'lucide-react';
 import coverImage from '../login-form/login-form-cover.jpg';
-import { authClient } from '../../../lib/auth-client';
+import { authClient } from '@/lib/auth-client';
 import { useRouter } from 'next/navigation';
 import { RegisterSchema, RegisterFormData } from '../../../zod/auth';
 import { useState } from 'react';
