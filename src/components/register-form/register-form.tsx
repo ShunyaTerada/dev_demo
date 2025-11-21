@@ -51,7 +51,8 @@ export default function RegisterForm() {
       });
 
       if (result.error) {
-        const errorMessage = result.error.message || result.error.toString() || '登録に失敗しました。';
+        console.log("Registration error result:", result);
+        const errorMessage = result.error.message || result.error.statusText || '登録に失敗しました。';
         setError(errorMessage);
         toast.error("登録に失敗しました", {
           description: errorMessage,
