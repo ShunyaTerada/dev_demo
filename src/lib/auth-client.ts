@@ -1,9 +1,12 @@
 import { createAuthClient } from "better-auth/react";
-import { anonymousClient } from "better-auth/client/plugins";
+import { anonymousClient, inferAdditionalFields } from "better-auth/client/plugins";
+import { getBaseURL } from "./get-base-url";
+import { auth } from "./auth";
 
 export const authClient = createAuthClient({
-    baseURL: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
+    baseURL: getBaseURL(),
     plugins: [
-        anonymousClient()
+        anonymousClient(),
+        inferAdditionalFields<typeof auth>(),
     ]
 });

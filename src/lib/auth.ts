@@ -1,10 +1,15 @@
+import "server-only";
 import { betterAuth } from "better-auth";
+import { nanoid } from "nanoid";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
+import { nextCookies } from "better-auth/next-js";
 import { anonymous } from "better-auth/plugins";
-import { db } from "../../db";
-import * as schema from "../../db/schema/auth";
+import { db } from "@/db";
+import { getBaseURL } from "./get-base-url";
+import * as schema from "@/db/schema/auth";
 
 export const auth = betterAuth({
+    baseURL: getBaseURL(),
     database: drizzleAdapter(db, {
         provider: "pg",
         schema: {
@@ -21,10 +26,15 @@ export const auth = betterAuth({
             verifications: schema.verification,
         }
     }),
-    emailAndPassword: {
-        enabled: true,
+    advanced: {
+        generateId: () => nanoid(10),
     },
     plugins: [
+        nextCookies(),
         anonymous()
-    ]
+    ],
+    emailAndPassword: {
+        enabled: true,
+        requireEmailVerification: false,
+    },
 });

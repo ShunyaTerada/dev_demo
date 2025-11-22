@@ -1,9 +1,9 @@
 'use client';
 
-import { useForm } from '../../node_modules/.pnpm/react-hook-form@7.66.0_react@19.2.0/node_modules/react-hook-form/dist';
+import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
-import { PetFormSchema } from '../../zod/pet';
+import { PetFormSchema } from '@/zod/pet';
 import { PetFormData } from '@/types/pet';
 import {
   Form,
@@ -22,7 +22,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
-import { createPet } from '../../actions/pet';
+import { createPet } from '@/actions/pet';
 import { toast } from 'sonner';
 
 export default function PetForm() {
