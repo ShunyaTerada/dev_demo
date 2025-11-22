@@ -1,7 +1,9 @@
-import { Button } from '@/components/ui/button';
+
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { UserCard } from '@/components/user-card';
 import { verifySession } from '@/lib/session';
+import Link from 'next/link';
 
 export default async function MypagePage() {
 
@@ -33,7 +35,7 @@ export default async function MypagePage() {
           <div className="space-y-4">
             <p>ここはユーザーの個人ページです。</p>
             <UserCard user={session.user} />
-            <Button>設定を変更</Button>
+            <Link href="/pets/new" className="text-blue-500 hover:underline">ペット登録</Link>
           </div>
         </CardContent>
       </Card>
