@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { GripVerticalIcon } from "lucide-react"
-import * as ResizablePrimitive from "../../../node_modules/.pnpm/react-resizable-panels@3.0._865bc8638dac053e118b8274fe6c3f3d/node_modules/react-resizable-panels/dist"
+import * as ResizablePrimitive from "react-resizable-panels"
 
 import { cn } from "@/lib/utils"
 
