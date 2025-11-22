@@ -21,6 +21,8 @@ export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
+  const router = useRouter();
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
@@ -33,6 +35,7 @@ export default function LoginPage() {
 
       // 成功時の処理
       console.log('ログイン成功:', { email, password });
+      router.push('/mypage');
 
     } catch {
       setError('ログインに失敗しました。メールアドレスとパスワードを確認してください。');
@@ -41,7 +44,7 @@ export default function LoginPage() {
     }
   };
 
-  const router = useRouter();
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background p-4">
