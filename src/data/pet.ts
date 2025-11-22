@@ -7,6 +7,12 @@ export const getPets = async () => {
     return db.query.pets.findMany({
         with: {
             owners: true
+        },
+        columns: {
+            id: true,
+            name: true,
+            type: true,
+            ownerID: true,
         }
     })
 };
