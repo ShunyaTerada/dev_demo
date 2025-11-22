@@ -1,6 +1,6 @@
 import { Card, CardContent } from "./ui/card";
 import { Pet } from "../types/pet";
-
+import { Progress } from "./ui/progress";
 
 export function PetCard({ pet }: { pet: Pet }) {
     return (
@@ -10,10 +10,21 @@ export function PetCard({ pet }: { pet: Pet }) {
                 <p className="text-muted-foreground text-sm break-all">
                     {pet.type}
                 </p>
-                <p className="text-muted-foreground text-sm break-all">
-                    {pet.hp}
-                </p>
-
+                <div className="mt-2">
+                    <div className="flex justify-between text-xs text-muted-foreground mb-1">
+                        <span>HP</span>
+                        <span>{pet.hp}/100</span>
+                    </div>
+                    <Progress
+                        value={pet.hp}
+                        className={`h-2 ${pet.hp > 50
+                            ? "[&>[data-slot=progress-indicator]]:bg-green-500"
+                            : pet.hp > 20
+                                ? "[&>[data-slot=progress-indicator]]:bg-yellow-500"
+                                : "[&>[data-slot=progress-indicator]]:bg-red-500"
+                            }`}
+                    />
+                </div>
             </CardContent>
         </Card>
     );
