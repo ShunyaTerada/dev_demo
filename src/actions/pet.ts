@@ -1,11 +1,23 @@
-const session = await verifySession();
-const ownerID = session.user.id;
+'use server';
 
-await db.insert(pets).values({ ...data, ownerID });
+import { db } from '@/db';
+import { PetFormSchema } from '@/zod/pet';
+import { pets } from '@/db/schema/pet';
+import { verifySession } from '@/lib/session';
+import { and, eq } from 'drizzle-orm';
+import { z } from 'zod';
+
+export async function createPet(formData: z.infer<typeof PetFormSchema>) {
+    try {
+        const data = PetFormSchema.parse(formData);
+        const session = await verifySession();
+        const ownerID = session.user.id;
+
+        await db.insert(pets).values({ ...data, ownerID });
     } catch (error) {
-    console.error('Error creating pet:', error);
-    throw error;
-}
+        console.error('Error creating pet:', error);
+        throw error;
+    }
 }
 
 export async function updatePet(id: string, formData: z.infer<typeof PetFormSchema>) {

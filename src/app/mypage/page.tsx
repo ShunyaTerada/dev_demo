@@ -1,12 +1,12 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { UserCard } from '@/components/user-card';
-import { verifySession } from '../../../lib/session';
+import { verifySession } from '@/lib/session';
 
 export default async function MypagePage() {
 
   const session = await verifySession();
-  
+
   // プレビューモードかどうかの判定
   const isPreviewMode = session.user.id === 'preview-user-123';
 
@@ -19,9 +19,9 @@ export default async function MypagePage() {
           <p className="text-sm">認証をバイパスしてマイページをプレビュー中です。本番では無効化されます。</p>
         </div>
       )}
-      
+
       <h1 className="text-3xl font-bold">マイページ</h1>
-      
+
       <Card>
         <CardHeader>
           <CardTitle>ようこそ！</CardTitle>

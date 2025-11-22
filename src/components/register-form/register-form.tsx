@@ -21,7 +21,7 @@ import { Eye, EyeOff, Mail, Lock, User, Github } from 'lucide-react';
 import coverImage from '../login-form/login-form-cover.jpg';
 import { authClient } from '@/lib/auth-client';
 import { useRouter } from 'next/navigation';
-import { RegisterSchema, RegisterFormData } from '../../../zod/auth';
+import { RegisterSchema, RegisterFormData } from '@/zod/auth';
 import { useState } from 'react';
 import { toast } from 'sonner';
 
