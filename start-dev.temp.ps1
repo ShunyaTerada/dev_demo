@@ -1,4 +1,4 @@
-﻿# 開発環境一括起動スクリプト
+# Dev Environment Startup Script
 # 1. Docker Desktopの起動確認と起動
 # 2. Supabaseのローカル起動
 # 3. Next.jsの開発サーバー起動
