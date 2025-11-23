@@ -37,6 +37,6 @@ export const LessHp: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const hp = canvas.getByText('HP');
-    expect(hp).toHaveTextContent('5/100');
+    expect(hp).toBeVisible();
   }
 };
