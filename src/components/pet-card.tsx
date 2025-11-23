@@ -27,6 +27,11 @@ export function PetCard({ pet }: { pet: Pet }) {
                     </div>
                     <Progress
                         value={pet.hp}
+                        role="progressbar"
+                        aria-roledescription="HP"
+                        aria-valuemin={0}
+                        aria-valuemax={100}
+                        aria-valuenow={pet.hp}
                         className={`h-2 ${pet.hp > 50
                             ? "[&>[data-slot=progress-indicator]]:bg-green-500"
                             : pet.hp > 20
