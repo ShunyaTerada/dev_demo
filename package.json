@@ -81,7 +81,6 @@
     "@storybook/addon-docs": "10.0.8",
     "@storybook/addon-onboarding": "10.0.8",
     "@storybook/addon-vitest": "10.0.8",
-    "@storybook/nextjs": "10.0.8",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -96,6 +95,7 @@
     "supabase": "^2.54.11",
     "tailwindcss": "^4",
     "tsx": "^4.20.6",
-    "typescript": "^5"
+    "typescript": "^5",
+    "@storybook/nextjs-vite": "^10.0.8"
   }
 }
