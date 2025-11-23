@@ -12,7 +12,7 @@ export default async function PetsPage() {
                 <p className="text-gray-600">{pets.length}匹のペット</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mx-8">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mx-8">
                 {pets.map((pet) => (
                     <PetCard key={pet.id} pet={{ ...pet, hp: pet.hp }} />
                 ))}
