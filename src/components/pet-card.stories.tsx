@@ -34,9 +34,27 @@ export const LessHp: Story = {
     }
   },
 
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    const hp = canvas.getByText('HP');
-    expect(hp).toBeVisible();
+    await step('HPが表示されているか確認', async () => {
+      const hp = canvas.getByText('HP');
+      expect(hp).toBeVisible();
+    })
+    await step('ペットのタイプが表示されているか確認', async () => {
+      const type = canvas.getByText('犬');
+      expect(type).toBeVisible();
+    })
+    await step('ペットの名前が表示されているか確認', async () => {
+      const name = canvas.getByText('ポチ');
+      expect(name).toBeVisible();
+    })
+    await step('HPバーが表示されているか確認', async () => {
+      const hpBar = canvas.getByRole('progressbar');
+      expect(hpBar).toBeVisible();
+    })
+    await step('HPバーの色が赤になっているか確認', async () => {
+      const hpBar = canvas.getByRole('progressbar');
+      expect(hpBar).toHaveClass('[&>[data-slot=progress-indicator]]:bg-red-500');
+    })
   }
 };

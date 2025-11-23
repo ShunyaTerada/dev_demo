@@ -1,8 +1,10 @@
-import { Card, CardContent } from "./ui/card";
+import { Card, CardContent, CardFooter } from "./ui/card";
 import { Pet } from "../types/pet";
 import { Progress } from "./ui/progress";
 import { Badge } from "./ui/badge";
 import { PetType } from "../types/pet";
+import { Button } from "./ui/button";
+import Link from "next/link";
 
 export function PetCard({ pet }: { pet: Pet }) {
 
@@ -41,6 +43,17 @@ export function PetCard({ pet }: { pet: Pet }) {
                     />
                 </div>
             </CardContent>
+            <CardFooter>
+                <Button asChild>
+                    <Link
+                        href={`/pets/${pet.id}`}
+                        className="w-full"
+                    >
+                        編集
+                    </Link>
+                </Button>
+
+            </CardFooter>
         </Card>
     );
 }
