@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
 import { PetCard } from './pet-card';
+import { within, expect } from '@storybook/test';
 
 const meta = {
   component: PetCard,
@@ -20,4 +21,22 @@ export const Default: Story = {
       ownerID: 'mock-owner-id',
     },
   },
+};
+
+export const LessHp: Story = {
+  args: {
+    pet: {
+      "id": "mock-id",
+      "name": "ポチ",
+      "type": "dog",
+      "ownerID": "mock-owner-id",
+      "hp": 5
+    }
+  },
+
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const hp = canvas.getByText('HP');
+    expect(hp).toHaveTextContent('5/100');
+  }
 };
