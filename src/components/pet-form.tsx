@@ -22,7 +22,13 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
-import { createPet } from '@/actions/pet';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { createPet, updatePet } from '@/actions/pet';
 import { toast } from 'sonner';
 import { Pet } from '@/types/pet';
 
@@ -39,16 +45,20 @@ export default function PetForm({ defaultValues }: { defaultValues?: Pet }) {
 
   const onSubmit = async (data: PetFormData) => {
     try {
-      await createPet(data);
-      toast("ペットが作成されました！", {
-        description: `${data.name}を追加しました。`,
+      if (defaultValues) {
+        await updatePet(defaultValues.id, data);
+      } else {
+        await createPet(data);
+        form.reset();
+      }
+      toast(`ペットの${defaultValues ? '更新' : '作成'}が完了しました！`, {
+        description: `${data.name}を${defaultValues ? '更新' : '追加'}しました。`,
       });
-      form.reset();
       router.refresh();
       // 成功時のみペット一覧ページにリダイレクト
       router.push('/pets');
     } catch (error) {
-      toast("エラーが発生しました", {
+      toast(`ペットの${defaultValues ? '更新' : '作成'}に失敗しました。`, {
         description: error instanceof Error ? error.message : "ペットの作成に失敗しました。",
       });
       console.error("Error creating pet:", error);
@@ -59,68 +69,76 @@ export default function PetForm({ defaultValues }: { defaultValues?: Pet }) {
   const isSubmitting = form.formState.isSubmitting;
   return (
     <div className="container p-10 max-w-2xl">
-      <h1 className="text-2xl font-bold mb-6">新規ペット登録</h1>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <FormField
-            control={form.control}
-            name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>名前</FormLabel>
-                <FormControl>
-                  <Input placeholder="ペットの名前を入力" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="type"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>種類</FormLabel>
-                <Select onValueChange={field.onChange} value={field.value}>
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="種類を選択" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    <SelectItem value="dog">犬</SelectItem>
-                    <SelectItem value="cat">猫</SelectItem>
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="hp"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>HP</FormLabel>
-                <FormControl>
-                  <Input
-                    type="number"
-                    min={1}
-                    max={100}
-                    placeholder="50"
-                    {...field}
-                    onChange={(e) => field.onChange(Number(e.target.value))}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <Button type="submit" className="w-full" disabled={isSubmitting}>
-            {isSubmitting ? '登録中...' : '登録'}
-          </Button>
-        </form>
-      </Form>
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-2xl font-bold">
+            {defaultValues ? 'ペット情報を編集' : '新規ペット登録'}
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>名前</FormLabel>
+                    <FormControl>
+                      <Input placeholder="ペットの名前を入力" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="type"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>種類</FormLabel>
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="種類を選択" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="dog">犬</SelectItem>
+                        <SelectItem value="cat">猫</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="hp"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>HP</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="number"
+                        min={1}
+                        max={100}
+                        placeholder="50"
+                        {...field}
+                        onChange={(e) => field.onChange(Number(e.target.value))}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button type="submit" className="w-full" disabled={isSubmitting}>
+                {defaultValues ? 'ペットを更新' : 'ペットを追加'}
+              </Button>
+            </form>
+          </Form>
+        </CardContent>
+      </Card>
     </div>
   );
 }
