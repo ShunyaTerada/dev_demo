@@ -37,7 +37,7 @@ export default function RootLayout({
         suppressHydrationWarning={true}
       >
         <Header />
-        <main className="flex-1">
+        <main className="flex justify-center items-center p-8">
           {children}
         </main>
         <Footer />

@@ -68,8 +68,8 @@ export default function PetForm({ defaultValues }: { defaultValues?: Pet }) {
 
   const isSubmitting = form.formState.isSubmitting;
   return (
-    <div className="container p-10 max-w-2xl">
-      <Card>
+    <div className="container flex justify-center items-center max-w-3xl">
+      <Card className="w-full">
         <CardHeader>
           <CardTitle className="text-2xl font-bold">
             {defaultValues ? 'ペット情報を編集' : '新規ペット登録'}

@@ -12,7 +12,7 @@ export default async function PetPage({ params }: PageProps<'/pets/[id]'>) {
     }
 
     return (
-        <div >
+        <div className="container flex justify-center items-center flex-col gap-8">
             <PetCard pet={pet} />
             <PetForm defaultValues={pet} />
         </div>
