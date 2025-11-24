@@ -1,7 +1,8 @@
 import 'server-only';
 import { db } from '../db';
-import { eq } from 'drizzle-orm';
-
+import { eq, and } from 'drizzle-orm';
+import { verifySession } from '@/lib/session';
+import { pets } from '../db/schema/pet';
 
 export const getPets = async () => {
     return db.query.pets.findMany({
@@ -18,4 +19,15 @@ export const getPets = async () => {
 export const getPet = async (id: string) => {
     return db.query.pets.findFirst(
         { where: (pets) => eq(pets.id, id) })
+};
+
+export const isPetOwner = async (petId: string) => {
+    const session = await verifySession()
+    const ownerId = session?.user.id;
+
+    const pet = await db.query.pets.findFirst({
+        where: and(eq(pets.id, petId), eq(pets.ownerID, ownerId))
+    })
+
+    return pet !== undefined;
 };
