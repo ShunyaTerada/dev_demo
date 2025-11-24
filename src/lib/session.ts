@@ -7,7 +7,7 @@ import { headers } from 'next/headers';
 export const verifySession = async () => {
     // 環境変数でプレビューモードを制御
     const isPreviewMode = process.env.AUTH_PREVIEW_MODE === 'true' && process.env.NODE_ENV === 'development';
-    
+
     // プレビューモード時はダミーセッションを返す
     if (isPreviewMode) {
         console.log('🎭 プレビューモードでマイページにアクセス中');
@@ -40,7 +40,7 @@ export const verifySession = async () => {
     });
 
     if (!session) {
-       redirect('/login');
+        redirect('/login');
     }
 
     return session;
