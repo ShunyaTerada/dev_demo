@@ -1,4 +1,4 @@
-import { PetCard } from "@/components/pet-card";
+import PetCard from "@/components/pet-card";
 import { getPets } from "@/data/pet";
 
 

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
-import { PetCard } from './pet-card';
+import PetCard from './pet-card';
 import { within, expect } from '@storybook/test';
 
 const meta = {
