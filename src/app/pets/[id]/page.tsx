@@ -12,7 +12,7 @@ export default async function PetPage({ params }: PageProps<'/pets/[id]'>) {
     }
 
     return (
-        <div className="container mx-auto py-10 space-y-8">
+        <div >
             <PetCard pet={pet} />
             <PetForm defaultValues={pet} />
         </div>

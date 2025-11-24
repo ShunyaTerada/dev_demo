@@ -55,5 +55,6 @@ export default function PetCard({ pet }: { pet: Pet }) {
 
             </CardFooter>
         </Card>
+
     );
 }
