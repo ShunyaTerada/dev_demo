@@ -28,23 +28,24 @@ export default function LoginPage() {
     setIsLoading(true);
     setError('');
 
-    // ここに実際の認証ロジックを実装
     try {
-      // 仮の認証処理
-      await new Promise(resolve => setTimeout(resolve, 2000));
-
-      // 成功時の処理
-      console.log('ログイン成功:', { email, password });
-      router.push('/mypage');
-
-    } catch {
-      setError('ログインに失敗しました。メールアドレスとパスワードを確認してください。');
+      await authClient.signIn.email({
+        email,
+        password,
+      }, {
+        onSuccess: () => {
+          router.push('/mypage');
+        },
+        onError: (ctx) => {
+          setError(ctx.error.message);
+        }
+      });
+    } catch (err) {
+      setError('予期せぬエラーが発生しました。');
     } finally {
       setIsLoading(false);
     }
   };
-
-
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background p-4">
@@ -189,6 +190,6 @@ export default function LoginPage() {
           </p>
         </CardFooter>
       </Card>
-    </div>
+    </div >
   );
 }
