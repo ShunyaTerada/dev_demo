@@ -6,7 +6,7 @@ import { PetType } from "../types/pet";
 import { Button } from "./ui/button";
 import Link from "next/link";
 
-export function PetCard({ pet }: { pet: Pet }) {
+export default function PetCard({ pet }: { pet: Pet }) {
 
     const getPetTypeLabel = (type: PetType) => {
         const typeLabels: Record<PetType, string> = {

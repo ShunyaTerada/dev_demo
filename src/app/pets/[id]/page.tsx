@@ -1,5 +1,7 @@
 import { getPet } from "@/data/pet";
 import { notFound } from "next/navigation";
+import PetCard from "@/components/pet-card";
+import PetForm from "@/components/pet-form";
 
 export default async function PetPage({ params }: PageProps<'/pets/[id]'>) {
     const petId = (await params).id;
@@ -11,10 +13,8 @@ export default async function PetPage({ params }: PageProps<'/pets/[id]'>) {
 
     return (
         <div>
-            <h1>ペット詳細ページ</h1>
-            <p>名前: {pet?.name}</p>
-            <p>種類: {pet?.type}</p>
-            <p>HP: {pet?.hp}</p>
+            <PetCard pet={pet} />
+            <PetForm pet={pet} />
         </div>
     );
 }

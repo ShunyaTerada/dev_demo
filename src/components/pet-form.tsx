@@ -24,12 +24,13 @@ import {
 import { Button } from '@/components/ui/button';
 import { createPet } from '@/actions/pet';
 import { toast } from 'sonner';
+import { Pet } from '@/types/pet';
 
-export default function PetForm() {
+export default function PetForm({ defaultValues }: { defaultValues?: Pet }) {
   const router = useRouter();
   const form = useForm<PetFormData>({
     resolver: zodResolver(PetFormSchema),
-    defaultValues: {
+    defaultValues: defaultValues ?? {
       name: '',
       type: undefined,
       hp: 50,
