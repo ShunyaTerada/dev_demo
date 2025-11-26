@@ -18,7 +18,7 @@ const db = drizzle(sql);
 async function main() {
     console.log('🚀 マイグレーションを開始します...');
 
-    await migrate(db, { migrationsFolder: './db/migrations' });
+    await migrate(db, { migrationsFolder: './src/db/migrations' });
 
     console.log('✅ マイグレーションが完了しました！');
 
