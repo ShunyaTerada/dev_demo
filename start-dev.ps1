@@ -17,7 +17,11 @@ if (-not $dockerProcess) {
         Write-Host "⏳ Dockerの準備ができるまで待機しています..." -ForegroundColor Gray
         # Dockerが応答するまでループ待機 (最大60秒程度)
         $retryCount = 0
-        while (-not (docker info *>$null) -and $retryCount -lt 30) {
+        while ($retryCount -lt 30) {
+            docker info > $null 2>&1
+            if ($LASTEXITCODE -eq 0) {
+                break
+            }                               
             Start-Sleep -Seconds 2
             Write-Host "." -NoNewline -ForegroundColor Gray
             $retryCount++
