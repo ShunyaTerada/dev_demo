@@ -13,5 +13,6 @@
 | 2025-11-25 | [[Better Auth] クライアントサイドでのセッション管理](./25/better-auth-client-session.md) |
 | 2025-11-26 | [useForm Usage (React Hook Form)](./26/useform-usage.md) |
 | 2025-11-26 | [useRouter Hook](./26/userouter-hook.md) |
+| 2025-11-26 | [Conventional Commits (コミットメッセージの命名規則)](./26/conventional-commits.md) |
 
 
