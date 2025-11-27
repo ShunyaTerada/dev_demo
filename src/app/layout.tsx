@@ -5,6 +5,7 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { getBaseURL } from "@/lib/get-base-url";
 import { Toaster } from "@/components/ui/sonner";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,12 +37,14 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
         suppressHydrationWarning={true}
       >
-        <Header />
-        <main className="flex justify-center items-center p-8">
-          {children}
-        </main>
-        <Footer />
-        <Toaster />
+        <NuqsAdapter>
+          <Header />
+          <main className="flex justify-center items-center p-8">
+            {children}
+          </main>
+          <Footer />
+          <Toaster />
+        </NuqsAdapter>
       </body>
     </html>
   );
