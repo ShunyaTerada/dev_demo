@@ -1,9 +1,15 @@
 import PetCard from "@/components/pet-card";
-import { getPets } from "@/data/pet";
+import { getPets, searchPets } from "@/data/pet";
 import PetSearchForm from "@/components/pet-search-form";
+import { createLoader, parseAsString } from "nuqs/server";
 
-export default async function PetsPage() {
-    const pets = await getPets();
+export const loadSearchParams = createLoader({
+    name: parseAsString.withDefault(''),
+})
+
+export default async function PetsPage({ searchParams }: PageProps<'/pets'>) {
+    const { name } = await loadSearchParams(searchParams);
+    const pets = name ? await searchPets(name) : await getPets();
 
     return (
         <div className="container mx-auto py-8 space-y-6">
