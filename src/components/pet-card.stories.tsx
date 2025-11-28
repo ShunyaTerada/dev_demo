@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
 import PetCard from './pet-card';
-import { within, expect } from '@storybook/test';
+import { within, expect } from 'storybook/test';
 
 const meta = {
   component: PetCard,
