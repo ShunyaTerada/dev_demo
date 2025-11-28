@@ -1,12 +1,17 @@
 import PetCard from "@/components/pet-card";
 import { getPets } from "@/data/pet";
-
+import PetSearchForm from "@/components/pet-search-form";
 
 export default async function PetsPage() {
     const pets = await getPets();
 
     return (
         <div className="container mx-auto py-8 space-y-6">
+            <div className="mx-8">
+                <h3 className="text-xl font-semibold mb-4">検索</h3>
+                <PetSearchForm />
+            </div>
+
             <div className="flex justify-between items-center space-x-4 mx-8">
                 <h1 className="text-3xl font-bold">ペット一覧</h1>
                 <p className="text-gray-600">{pets.length}匹のペット</p>

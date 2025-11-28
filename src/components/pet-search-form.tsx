@@ -1,5 +1,5 @@
 'use client';
-import { useQueryState } from 'nuqs';
+import { debounce, useQueryState } from 'nuqs';
 import { z } from 'zod';
 import { Input } from './ui/input';
 
@@ -12,6 +12,8 @@ export default function PetSearchForm() {
         defaultValue: '',
     })
     return (
-        <Input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+        <Input type="text" value={name} onChange={(e) => setName(e.target.value, {
+            limitUrlUpdates: e.target.value === "" ? undefined : debounce(500),
+        })} />
     );
 }
