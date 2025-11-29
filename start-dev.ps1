@@ -43,19 +43,30 @@ else {
 }
 
 # --- 2. Supabaseの起動 ---
+# --- 2. Supabaseの起動 ---
 Write-Host "⚡ Supabaseを起動しています..." -ForegroundColor Cyan
-try {
-    # npxはバッチファイルなのでCall演算子(&)を使うとより安全
+
+# 初回起動試行
+& npx supabase start
+
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "⚠️ Supabaseの起動に失敗しました。コンテナの競合や不整合の可能性があります。" -ForegroundColor Yellow
+    Write-Host "🔄 クリーンアップ(stop)を実行して、再試行します..." -ForegroundColor Yellow
+    
+    # クリーンアップ (エラーは無視して続行)
+    & npx supabase stop
+    
+    # 再試行
+    Write-Host "⚡ Supabaseを再起動しています (リトライ)..." -ForegroundColor Cyan
     & npx supabase start
+    
     if ($LASTEXITCODE -ne 0) {
-        throw "Supabase start failed"
+        Write-Host "❌ Supabaseの再起動にも失敗しました。エラーログを確認してください。" -ForegroundColor Red
+        exit 1
     }
-    Write-Host "✅ Supabaseの起動完了！" -ForegroundColor Green
 }
-catch {
-    Write-Host "❌ Supabaseの起動に失敗しました。" -ForegroundColor Red
-    exit 1
-}
+
+Write-Host "✅ Supabaseの起動完了！" -ForegroundColor Green
 
 # --- 3. Next.js (pnpm dev) の起動 ---
 Write-Host "✨ Next.js (pnpm dev) を起動します..." -ForegroundColor Cyan

@@ -1,0 +1,12 @@
+open supabase\.temp\profile: The system cannot find the file specified.
+Supabase CLI 2.54.11
+Using profile: supabase (supabase.co)
+Loading project ref from file: supabase\.temp\project-ref
+Starting database from backup...
+Starting containers...
+WARNING: Analytics on Windows requires Docker daemon exposed on tcp://localhost:2375.
+See https://supabase.com/docs/guides/local-development/cli/getting-started?queryGroups=platform&platform=windows#running-supabase-locally for more details.
+Stopping containers...
+Pruned containers: [ab8452bb132cde7a8225409a4479a291f9a9eae8b351f3e11c85dea3a186ea91 2769ef1196a08f8dcec68aa2af4a82fa3e6e653ff30038bff684b9a5358f0538 1cdc080d9eaca3654df68ff6f895e235007775295d4b54cdb82b08b8a298986a]
+Pruned network: [supabase_network_dev_demo]
+failed to create docker container: Error response from daemon: Conflict. The container name "/supabase_vector_dev_demo" is already in use by container "1cdc080d9eaca3654df68ff6f895e235007775295d4b54cdb82b08b8a298986a". You have to remove (or rename) that container to be able to reuse that name.
