@@ -1,8 +1,8 @@
-'use client';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { Button } from '@/components/ui/button';
-import { authClient } from '@/lib/auth-client';
+"use client";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { authClient } from "@/lib/auth-client";
 
 export default function Header() {
   const router = useRouter();
@@ -10,7 +10,7 @@ export default function Header() {
 
   const handleLogout = async () => {
     await authClient.signOut();
-    router.push('/login');
+    router.push("/login");
   };
 
   return (
@@ -18,9 +18,14 @@ export default function Header() {
       <div className="mx-auto px-4 sm:px-24 lg:px-36 flex h-16 items-center justify-between">
         <div className="flex items-center space-x-2">
           {/* ロゴ */}
-          <Link href="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
+          <Link
+            href="/"
+            className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
+          >
             <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">M</span>
+              <span className="text-primary-foreground font-bold text-lg">
+                M
+              </span>
             </div>
             <span className="text-xl font-bold text-foreground">My App</span>
           </Link>
@@ -32,7 +37,7 @@ export default function Header() {
           <Button
             variant="ghost"
             size="sm"
-            onClick={() => router.push('/pets')}
+            onClick={() => router.push("/pets")}
           >
             ペット一覧
           </Button>
@@ -46,7 +51,7 @@ export default function Header() {
               variant="outline"
               size="sm"
               className="bg-white hover:bg-gray-100 border-gray-300"
-              onClick={() => router.push('/login')}
+              onClick={() => router.push("/login")}
             >
               ログイン
             </Button>
@@ -57,7 +62,7 @@ export default function Header() {
                 variant="outline"
                 size="sm"
                 className="flex items-center space-x-2 bg-black hover:bg-gray-800 text-white"
-                onClick={() => router.push('/mypage')}
+                onClick={() => router.push("/mypage")}
               >
                 <svg
                   className="w-4 h-4"
@@ -75,11 +80,7 @@ export default function Header() {
                 <span>マイページ</span>
               </Button>
 
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={handleLogout}
-              >
+              <Button variant="ghost" size="sm" onClick={handleLogout}>
                 ログアウト
               </Button>
             </>

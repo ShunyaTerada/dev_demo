@@ -4,13 +4,13 @@ export type Json =
   | boolean
   | null
   | { [key: string]: Json | undefined }
-  | Json[]
+  | Json[];
 
 export type Database = {
   public: {
-    Tables: Record<string, never>
+    Tables: Record<string, never>;
     // TODO: ここにテーブルの型定義を追加
-    // 例: 
+    // 例:
     // Tables: {
     //   users: {
     //     Row: {
@@ -30,9 +30,9 @@ export type Database = {
     //     }
     //   }
     // }
-    Views: Record<string, never>
-    Functions: Record<string, never>
-    Enums: Record<string, never>
-    CompositeTypes: Record<string, never>
-  }
-}
+    Views: Record<string, never>;
+    Functions: Record<string, never>;
+    Enums: Record<string, never>;
+    CompositeTypes: Record<string, never>;
+  };
+};

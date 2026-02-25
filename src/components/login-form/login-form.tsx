@@ -1,47 +1,57 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Separator } from '@/components/ui/separator';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Eye, EyeOff, Mail, Lock, Github } from 'lucide-react';
-import coverImage from './login-form-cover.jpg';
-import { authClient } from '@/lib/auth-client';
-import { useRouter } from 'next/navigation';
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Separator } from "@/components/ui/separator";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Eye, EyeOff, Mail, Lock, Github } from "lucide-react";
+import coverImage from "./login-form-cover.jpg";
+import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    setError('');
+    setError("");
 
     try {
-      await authClient.signIn.email({
-        email,
-        password,
-      }, {
-        onSuccess: () => {
-          router.push('/mypage');
+      await authClient.signIn.email(
+        {
+          email,
+          password,
         },
-        onError: (ctx) => {
-          setError(ctx.error.message);
-        }
-      });
+        {
+          onSuccess: () => {
+            router.push("/mypage");
+          },
+          onError: (ctx) => {
+            setError(ctx.error.message);
+          },
+        },
+      );
     } catch (err) {
-      setError('予期せぬエラーが発生しました。');
+      setError("予期せぬエラーが発生しました。");
     } finally {
       setIsLoading(false);
     }
@@ -51,7 +61,9 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-background p-4">
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl font-bold text-center">ログイン</CardTitle>
+          <CardTitle className="text-2xl font-bold text-center">
+            ログイン
+          </CardTitle>
           <CardDescription className="text-center">
             アカウントにログインしてください
           </CardDescription>
@@ -60,7 +72,7 @@ export default function LoginPage() {
               src={coverImage}
               alt="ログインページカバー画像"
               fill
-              placeholder='blur'
+              placeholder="blur"
               className="object-cover"
             />
             <div className="absolute inset-0 bg-linear-to-b from-transparent to-background/20" />
@@ -137,7 +149,7 @@ export default function LoginPage() {
             </div>
 
             <Button type="submit" className="w-full" disabled={isLoading}>
-              {isLoading ? 'ログイン中...' : 'ログイン'}
+              {isLoading ? "ログイン中..." : "ログイン"}
             </Button>
           </form>
 
@@ -150,18 +162,17 @@ export default function LoginPage() {
               try {
                 setIsLoading(true);
                 await authClient.signIn.anonymous();
-                router.push('/mypage');
+                router.push("/mypage");
               } catch (error) {
-                console.error('ゲストログインエラー:', error);
-                setError('ゲストログインに失敗しました。');
+                console.error("ゲストログインエラー:", error);
+                setError("ゲストログインに失敗しました。");
               } finally {
                 setIsLoading(false);
               }
             }}
           >
-            {isLoading ? 'ログイン中...' : 'ゲストでログイン'}
+            {isLoading ? "ログイン中..." : "ゲストでログイン"}
           </Button>
-
 
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
@@ -183,13 +194,13 @@ export default function LoginPage() {
         <CardFooter className="flex flex-col space-y-2">
           <Separator />
           <p className="text-sm text-muted-foreground text-center">
-            アカウントをお持ちでない方は{' '}
+            アカウントをお持ちでない方は{" "}
             <Link href="/register" className="text-primary hover:underline">
               新規登録
             </Link>
           </p>
         </CardFooter>
       </Card>
-    </div >
+    </div>
   );
 }

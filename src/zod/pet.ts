@@ -9,10 +9,16 @@ import { createInsertSchema } from "drizzle-zod";
 // });
 
 export const PetFormSchema = createInsertSchema(pets, {
-    hp: z.number().min(1, "HPは1以上で入力してください").max(100, "HPは100以下で入力してください"),
-    name: z.string().trim().min(1, "名前は必須です").max(50, "名前は50文字以内で入力してください"),
-    type: z.enum(petType),
-})
-    .omit({
-        ownerID: true
-    });
+  hp: z
+    .number()
+    .min(1, "HPは1以上で入力してください")
+    .max(100, "HPは100以下で入力してください"),
+  name: z
+    .string()
+    .trim()
+    .min(1, "名前は必須です")
+    .max(50, "名前は50文字以内で入力してください"),
+  type: z.enum(petType),
+}).omit({
+  ownerID: true,
+});

@@ -43,7 +43,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## 📦 Project Information
 
-- **Repository**: [https://github.com/cronoscrown/dev_demo](https://github.com/cronoscrown/dev_demo)
+- **Repository**: [https://github.com/ShunyaTerada/dev_demo](https://github.com/ShunyaTerada/dev_demo)
 - **Live URL**: [https://dev-demo-omega.vercel.app](https://dev-demo-omega.vercel.app)
 - **Framework**: Next.js 15 with App Router
 - **Database**: Supabase PostgreSQL

@@ -1,16 +1,19 @@
-
-
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { UserCard } from '@/components/user-card';
-import { verifySession } from '@/lib/session';
-import Link from 'next/link';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { UserCard } from "@/components/user-card";
+import { verifySession } from "@/lib/session";
+import Link from "next/link";
 
 export default async function MypagePage() {
-
   const session = await verifySession();
 
   // プレビューモードかどうかの判定
-  const isPreviewMode = session.user.id === 'preview-user-123';
+  const isPreviewMode = session.user.id === "preview-user-123";
 
   return (
     <div className="container mx-auto py-8 space-y-6">
@@ -18,7 +21,9 @@ export default async function MypagePage() {
       {isPreviewMode && (
         <div className="bg-yellow-100 border border-yellow-400 text-yellow-800 px-4 py-3 rounded-md">
           <p className="font-medium">🎭 プレビューモード</p>
-          <p className="text-sm">認証をバイパスしてマイページをプレビュー中です。本番では無効化されます。</p>
+          <p className="text-sm">
+            認証をバイパスしてマイページをプレビュー中です。本番では無効化されます。
+          </p>
         </div>
       )}
 
@@ -35,7 +40,9 @@ export default async function MypagePage() {
           <div className="space-y-4">
             <p>ここはユーザーの個人ページです。</p>
             <UserCard user={session.user} />
-            <Link href="/pets/new" className="text-blue-500 hover:underline">ペット登録</Link>
+            <Link href="/pets/new" className="text-blue-500 hover:underline">
+              ペット登録
+            </Link>
           </div>
         </CardContent>
       </Card>

@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useRouter } from 'next/navigation';
-import { PetFormSchema } from '@/zod/pet';
-import { PetFormData } from '@/types/pet';
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
+import { PetFormSchema } from "@/zod/pet";
+import { PetFormData } from "@/types/pet";
 import {
   Form,
   FormControl,
@@ -12,32 +12,27 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
-import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-import { createPet, updatePet } from '@/actions/pet';
-import { toast } from 'sonner';
-import { Pet } from '@/types/pet';
+} from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { createPet, updatePet } from "@/actions/pet";
+import { toast } from "sonner";
+import { Pet } from "@/types/pet";
 
 export default function PetForm({ defaultValues }: { defaultValues?: Pet }) {
   const router = useRouter();
   const form = useForm<PetFormData>({
     resolver: zodResolver(PetFormSchema),
     defaultValues: defaultValues ?? {
-      name: '',
+      name: "",
       type: undefined,
       hp: 50,
     },
@@ -51,20 +46,22 @@ export default function PetForm({ defaultValues }: { defaultValues?: Pet }) {
         await createPet(data);
         form.reset();
       }
-      toast(`ペットの${defaultValues ? '更新' : '作成'}が完了しました！`, {
-        description: `${data.name}を${defaultValues ? '更新' : '追加'}しました。`,
+      toast(`ペットの${defaultValues ? "更新" : "作成"}が完了しました！`, {
+        description: `${data.name}を${defaultValues ? "更新" : "追加"}しました。`,
       });
       router.refresh();
       // 成功時のみペット一覧ページにリダイレクト
-      router.push('/pets');
+      router.push("/pets");
     } catch (error) {
-      toast(`ペットの${defaultValues ? '更新' : '作成'}に失敗しました。`, {
-        description: error instanceof Error ? error.message : "ペットの作成に失敗しました。",
+      toast(`ペットの${defaultValues ? "更新" : "作成"}に失敗しました。`, {
+        description:
+          error instanceof Error
+            ? error.message
+            : "ペットの作成に失敗しました。",
       });
       console.error("Error creating pet:", error);
     }
   };
-
 
   const isSubmitting = form.formState.isSubmitting;
   return (
@@ -72,7 +69,7 @@ export default function PetForm({ defaultValues }: { defaultValues?: Pet }) {
       <Card className="w-full">
         <CardHeader>
           <CardTitle className="text-2xl font-bold">
-            {defaultValues ? 'ペット情報を編集' : '新規ペット登録'}
+            {defaultValues ? "ペット情報を編集" : "新規ペット登録"}
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -133,7 +130,7 @@ export default function PetForm({ defaultValues }: { defaultValues?: Pet }) {
                 )}
               />
               <Button type="submit" className="w-full" disabled={isSubmitting}>
-                {defaultValues ? 'ペットを更新' : 'ペットを追加'}
+                {defaultValues ? "ペットを更新" : "ペットを追加"}
               </Button>
             </form>
           </Form>
