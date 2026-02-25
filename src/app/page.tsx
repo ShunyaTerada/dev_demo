@@ -1,114 +1,127 @@
 import Image from "next/image";
-
-
+import Link from "next/link";
+import Footer from "@/components/footer";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-sans">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+    <div className="min-h-screen flex flex-col">
+      {/* ヒーローセクション */}
+      <section className="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden">
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
+          src="/hero-pets.jpg"
+          alt="かわいいペットたち"
+          fill
+          className="object-cover"
           priority
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="relative z-10 text-center text-white px-4 max-w-2xl mx-auto">
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4 drop-shadow-lg">
+            🐾 ペットパートナー
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-lg sm:text-xl mb-8 text-white/90 drop-shadow">
+            あなたの大切なペットの情報を簡単に管理できるアプリケーション
           </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/login"
+              className="rounded-full bg-white text-gray-900 font-semibold px-8 py-3 text-base hover:bg-gray-100 transition-colors shadow-lg"
+            >
+              ログイン
+            </Link>
+            <Link
+              href="/register"
+              className="rounded-full border-2 border-white text-white font-semibold px-8 py-3 text-base hover:bg-white/20 transition-colors shadow-lg"
+            >
+              新規登録
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/8 dark:border-white/20 transition-colors flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-900 hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      </section>
+
+      {/* 機能紹介セクション */}
+      <section className="py-16 px-4 bg-gray-50 dark:bg-gray-900">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
+            主な機能
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+              <div className="text-4xl mb-4">🔐</div>
+              <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
+                安全な認証
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400">
+                メールアドレスで簡単にアカウント作成。安全な認証システムでデータを保護します。
+              </p>
+            </div>
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+              <div className="text-4xl mb-4">🐕</div>
+              <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
+                ペット管理
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400">
+                ペットの情報を登録・編集・管理。一覧で簡単に確認できます。
+              </p>
+            </div>
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+              <div className="text-4xl mb-4">😊</div>
+              <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
+                マイページ
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400">
+                アバター付きのマイページで、あなたとペットの情報をまとめて確認。
+              </p>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      {/* 技術スタックセクション */}
+      <section className="py-16 px-4">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">
+            技術スタック
+          </h2>
+          <div className="flex flex-wrap justify-center gap-3">
+            {[
+              "Next.js 15",
+              "TypeScript",
+              "Tailwind CSS",
+              "Better Auth",
+              "Drizzle ORM",
+              "Supabase",
+              "Vercel",
+              "Playwright",
+            ].map((tech) => (
+              <span
+                key={tech}
+                className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-full text-sm font-medium"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA セクション */}
+      <section className="py-16 px-4 bg-blue-600 dark:bg-blue-800">
+        <div className="max-w-2xl mx-auto text-center text-white">
+          <h2 className="text-3xl font-bold mb-4">今すぐ始めましょう</h2>
+          <p className="text-lg mb-8 text-blue-100">
+            アカウントを作成して、ペットの管理を始めてみませんか？
+          </p>
+          <Link
+            href="/register"
+            className="inline-block rounded-full bg-white text-blue-600 font-semibold px-8 py-3 text-base hover:bg-blue-50 transition-colors shadow-lg"
+          >
+            無料で登録する
+          </Link>
+        </div>
+      </section>
+
+      <Footer />
     </div>
   );
 }
