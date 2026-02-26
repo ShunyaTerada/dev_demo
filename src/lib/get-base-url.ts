@@ -1,5 +1,5 @@
 export const getBaseURL = (options?: { useCustomURL?: boolean }) => {
-  const isProd = process.env.NODE_ENV === "production"
+  const isProd = process.env.NODE_ENV === "production";
   const url = isProd
     ? process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL
     : options?.useCustomURL
